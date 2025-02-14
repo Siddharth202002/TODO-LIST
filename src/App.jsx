@@ -1,27 +1,27 @@
 import TodoList from "./components/TodoList/TodoList";
 import AddTodo from "./components/AddTodo/AddTodo";
 import { bindActionCreators } from "redux";
-import {
-  add_todo,
-  UpdateList,
-  DeleteList,
-  EditTodo,
-} from "./components/TodoActions/TodoActions";
+import todoReducer, {
+  addTodo,
+  editTodo,
+  deleteTodo,
+  updateList,
+} from "./slices/TodoSlice";
 import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
   const actions = bindActionCreators(
-    { add_todo, EditTodo, DeleteList, UpdateList },
+    { addTodo, editTodo, deleteTodo, updateList },
     dispatch
   );
   return (
     <div>
-      <AddTodo add_todo={actions.add_todo} />
+      <AddTodo add_todo={actions.addTodo} />
       <TodoList
-        EditTodo={actions.EditTodo}
-        DeleteList={actions.DeleteList}
-        UpdateList={actions.UpdateList}
+        EditTodo={actions.editTodo}
+        DeleteList={actions.deleteTodo}
+        UpdateList={actions.updateList}
       />
     </div>
   );

@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { add_todo } from "../TodoActions/TodoActions";
 
 function AddTodo({ add_todo }) {
   const [changeInput, setChangeInput] = useState("");
-  const dispatch = useDispatch();
 
   return (
     <div>
@@ -15,8 +12,8 @@ function AddTodo({ add_todo }) {
       />
       <button
         onClick={() => {
-          add_todo(changeInput);
-          setChangeInput("");
+          add_todo({ todoText: changeInput });
+          // setChangeInput("");
         }}
       >
         add

@@ -1,21 +1,21 @@
 import Todo from "../Todos/Todo";
 import { useDispatch, useSelector } from "react-redux";
-import { UpdateList, DeleteList, EditTodo } from "../TodoActions/TodoActions";
 
 function TodoList({ UpdateList, DeleteList, EditTodo }) {
   const dispatch = useDispatch();
-  const List = useSelector((state) => state.todo);
+  const List = useSelector((state) => state.todo.todoList);
+  console.log(List);
 
   function changeList(todo, finished) {
-    UpdateList(todo, finished);
+    UpdateList({ todo: todo, finished: finished });
   }
 
   function deleted(todo) {
-    DeleteList(todo);
+    DeleteList({ todo });
   }
 
   function edit(todo, editText) {
-    EditTodo(todo, editText);
+    EditTodo({ todo: todo, todoText: editText });
   }
 
   return (
